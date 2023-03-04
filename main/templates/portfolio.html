@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles/second.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" href="{% static 'assets/favicon.ico' %}">
+     <title>Huzaifa`s Projects</title>
+   </head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name">HUZAIFAINSHAL</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+        <li>
+            <a href="{% url 'projects' %}">
+                <i class="fa-solid fa-file"></i>
+                <span class="links_name">Show All</span>
+            </a>
+            <span class="tooltip">Show All</span>
+        </li>
+        {% for i in tags %}
+      <li>
+        <a href="{% url 'projects' %}?q={{i.id}}">
+          <i class='{{i.img}}'></i>
+          <span class="links_name">{{i.name}}</span>
+        </a>
+         <span class="tooltip">{{i.name}}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+
+  <section class="home-section">
+    <div class="box1">
+      <div class="text">My Projects</div>
+      <p class="ssp">All of the projects mentioned below are my personal developed all by myself.</p>
+      <div class="container">
+          {% for i in projects %}
+        <a href="{% url 'final' i.id %}" style="text-decoration: none;">  
+        <div class="box">
+          <img src="{{i.image_path.url}}" alt="">
+          <h2>{{i.name}}</h2>
+          <p>{{i.description}}</p>
+        </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <div id="switch" class="switch" onclick="switchtheme()">
+    <i class="fa-solid fa-moon"></i>
+  </div>
+
+
+
+  <script src="{% static 'js/second.js' %}"></script>
+</body>
+</html>
+ 

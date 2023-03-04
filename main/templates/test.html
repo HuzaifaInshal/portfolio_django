@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}">
+    <title>:)</title>
+    <style>
+        .flex{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+
+        }
+        iframe{
+            width: 300px;
+            height: 300px;
+        }
+        .flex2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <div class="flex2">
+        <iframe src="https://embed.lottiefiles.com/animation/115236" frameBorder="0"></iframe>
+        <h2>Thank you {{name}} for contacting</h2>
+        <h3>Email was delivered with success, he`ll get back to you soon!!</h3>
+        <p>Meanwhile you can check his great work <a href="{% url 'projects' %}">here</a> or can go <a href="javascript:history.back()">back</a></p>
+    </div>
+    </div>
+</body>
+</html>
+
