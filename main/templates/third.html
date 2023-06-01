@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styles/third.css' %}">
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}">
+    <title>{{final.name}}</title>
+</head>
+<body onload=zoom()>
+    <div id="switch" class="switch" onclick="switchtheme()">
+        <i class="fa-solid fa-moon"></i>
+      </div>
+    <div class="container">
+        <div class="imgholder">
+            <img class="img" src="{{final.image_path.url}}" alt="">
+        </div>
+        <div class="container2">
+        <h1 class="h1">{{final.name}}</h1>
+        <p class="p1">{{final.description}}</p>
+        <div class="flex-row">
+            <h2 class="h2">Tools Used</h2>
+            <p class="p2">{{final.tools}}</p>
+        </div>
+        {% if final.report_path %}
+        <div class="flex-row">
+            <h2 class="h2">Short Report</h2>
+            <a style="text-decoration: none;" href="{{final.report_path.url}}" target="_blank" ><p class="p2">Click to open :)</p></a>
+        </div>
+        {% endif %}
+        {% if final.live_link %}
+        <div class="flex-row">
+            <h2 class="h2">Live Link</h2>
+            <a style="text-decoration: none;" href="{{final.live_link}}" target="_blank" ><p class="p2">{{final.live_link}}</p></a>
+
+        </div>
+        {% endif %}
+        <div class="flex-row">
+            {% if final.git_link %}
+            <h2 class="h2">Git link</h2>
+            <a href="{{final.git_link}}" target="_blank"style="text-decoration: none;"><p class="p2">{{final.git_link}}</p></a>
+
+        </div>
+        {% endif %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/third.js' %}"></script>
+</body>
+</html>

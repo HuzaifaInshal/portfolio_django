@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huzaifa`s Personal Portfolio</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'styles/first.css' %}">
+</head>
+<!--<body onload="zoom();">-->
+<body>
+    <div class="overflow" id="overflow">
+    <div class="overflowgrid">
+    <div class="overflowwords">
+        <h4 class="overflowh4">Hi, my name is ...</h4>
+        <h1 class="overflowh1">Huzaifa inshal</h1>
+        <h4 class="overflowh4">Welcome to my portfolio Web</h4>
+     </div>
+    <div class="overflow-btn">
+    <a class="overlfow-btn-slice" onclick="closeoverlay()">
+        <div class="overflow-btn-top"><span>Lets Begin</span></div>
+            <div class="overflow-btn-bottom"><span>Lets Begin</span></div>
+        </a>
+    </div>
+</div>
+
+</div>
+
+    <div class="overnav" id="overnav">
+        <ul>
+            <li><a href="#start" onclick="closeovernav()">start</a></li>
+            <li><a href="#about" onclick="closeovernav()">about</a>
+                <div class="dropdown2">
+                    <a href="#skills" onclick="closeovernav()">- Skills</a>
+                    <a href="#education" onclick="closeovernav()">- Education & Certification</a>
+                    <a href="#work" onclick="closeovernav()">- Work Experience</a>
+                    <a href="#offer" onclick="closeovernav()">- What i offer</a>
+                </div>
+            </li>
+            <li><a href="#projects" onclick="closeovernav()">projects</a></li>
+            <li><a href="#contact" onclick="closeovernav()">contact</a></li>
+            <div class="links">
+                <a href=""><i class="fab fa-linkedin"></i></a>
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+            </div>
+        </ul>
+
+    </div>
+    <div class="switch" onclick="switchtheme()">
+        <i class="fa-solid fa-moon fa-2x"></i>
+    </div>
+    <div class="totop" onclick="topFunction()" id="myBtn" >
+        <i class="fa-solid fa-arrow-up fa-2x"></i>
+    </div>
+
+    <nav>
+        <a class="logo" href="#start" onclick="closeovernav()">HUZAIFAINSHAL<b>.</b></a>
+        <ul class="navItems">
+            <li><a href="#start">start</a></li>
+            <li class="hh"><a href="#about">about</a>
+                <div class="dropdown"><a href="#skills">Skills</a><a href="#education">Education & Certification</a><a href="#work">Work Experience</a><a href="#offer">What i offer</a></div>
+            </li>
+
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
+        <div class="links">
+            <a href=""><i class="fab fa-linkedin"></i></a>
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+        <a class="icon" onclick="openNav1()">
+            <i id="bars" class="fa fa-bars"></i>
+          </a>
+    </nav>
+
+    <div class="container" id="start">
+        <div class="wrapper" id="start">
+            <div class="cols cols0">
+                <span class="topline">I`m a software developer </span>
+                <h1 class="h1">I design and develop <span class="multitext"></span></h1>
+                <p class="p">I consider myself as a full-stack software developer with a strong experience in various web, desktop and mobile application development technologies. I also has a keen interest in various other IT related fields for example artificial intelligence, data analytics and data science. </p>
+                <div class="btns">
+                    {% for i in cv %}
+                    <a href="{{i.path.url}}" download style="text-decoration: none;"><button class="button">Download CV</button></a>
+                    {% endfor %}
+                    <a href="#contact" style="text-decoration: none;"><button class="button">Contact me</button></a>
+                </div>
+            </div>
+            <div class="cols cols1">
+                <div class="imgbox">
+                    <img src="{% static 'assets/re3.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="containerr">
+    <section id="about" class="section_about">
+            <h1 class="about_h1">About me</h1>
+        <section class="sect" id="skills">
+            <h1 class="skills_h1">My Skills</h1>
+            <h2 class="skills_h2">These are my technical skills</h2>
+            <div class="boxholder">
+                {% for i in primary %}
+                <div class="accord">
+                    <div class="accord2 accordion">
+                        <h3 class="skills_title">{{i.name}}</h3>
+                        <a class="dropdown"><i class="fa-solid fa-angle-down"></i></a>
+                    </div>
+                    <div class="accord3 panel">
+                        {% for j in secondary %}
+                        {% if i.name == j.primaryskillsname.name %}
+                        <div class="skill-y">{{j.name}}</div>
+                        <div class="accord4">
+                            <div class="line">
+                                <span class="line-fill" style="width: {{j.percentage}}% ;"></span>
+                            </div>
+                            <p class="skills_p">{{j.percentage}}%</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="sect" id="education">
+            <h1 class="skills_h1">My Qualifications</h1>
+            <h2 class="skills_h2">My Educational Journey</h2>
+            <div class="gridholder">
+            <div class="gridholder1">
+
+                <div class="holder1">
+                    <h2 class="eduh2">Matriculation</h2>
+                    <div style="display: flex; flex-direction: row; gap: 15px;">
+                    <a class="edu1"><i class="fa-solid fa-location-dot"></i></a>
+                    <p class="edup">M.C.H.School</p>
+                    </div>
+                    <div style="display: flex; flex-direction: row; gap: 15px;">
+                    <a class="edu1"><i class="fa-regular fa-calendar-days"></i></a>
+                    <p class="edup">2016~2018</p>
+                    </div>
+                </div>
+
+                <div class="holder1"></div>
+
+                <div class="holder1">
+                    <h2 class="eduh2">Computer & Information Engineering</h2>
+                    <div style="display: flex; flex-direction: row; gap: 15px;">
+                    <a class="edu1"><i class="fa-solid fa-location-dot"></i></a>
+                    <p class="edup">NED University of Engineering and Technology</p>
+                    </div>
+                    <div style="display: flex; flex-direction: row; gap: 15px;">
+                    <a class="edu1"><i class="fa-regular fa-calendar-days"></i></a>
+                    <p class="edup">2020~2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gridholder2">
+                <div class="round"></div>
+                <div class="lined"></div>
+                <div class="round"></div>
+                <div class="lined"></div>
+                <div class="round"></div>
+                <div class="lined"></div>
+                <div class="round"></div>
+
+            </div>
+
+            <div class="gridholder1">
+                <div class="holder1"></div>
+                <div class="holder1">
+                    <h2 class="eduh2">Intermediate</h2>
+                    <div style="display: flex; flex-direction: row; gap: 15px;">
+                    <a class="edu1"><i class="fa-solid fa-location-dot"></i></a>
+                    <p class="edup">Admajee Government Science College</p>
+                    </div>
+                    <div style="display: flex; flex-direction: row; gap: 15px;">
+                    <a class="edu1"><i class="fa-regular fa-calendar-days"></i></a>
+                    <p class="edup">2018~2020</p>
+                    </div>
+                </div>
+                <div class="holder1"></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;"></div><h2 class="cerh">My Certifications Journey</h2></div>
+        <div class="cerholder">
+            {% for i in cert %}
+            <div class="cerholder2">
+                <div class="horline"></div>
+                <div class="round"></div>
+                <h4 class="cerh2">{{i.name}}</h4>
+            </div>
+            <div class="cerd">
+                <h5 class="cerh5">{{i.fromvia}}</h5>
+                <p class="cerp">{{i.description}}</p>
+                <div style="display: flex; flex-direction: row; gap: 15px;">
+                    {% if i.certficate_path %}
+                    <a target="_blank"href="{{i.certficate_path.url}}" style="text-decoration: none;"><button class="cerbtn">View Certificate</button></a>
+                    {% endif %}
+                    <a target="_blank"href="{{i.link}}" style="text-decoration: none;"><button class="cerbtn">Link to Course</button></a>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+        </section>
+
+        <section class="sectt" id="work">
+        <h1 class="skills_h1 t">My Work Experience</h1>
+        <div class="cerholderr">
+            {% for i in work %}
+            <div class="cerholder2">
+                <div class="horline"></div>
+                <div class="round"></div>
+                <h4 class="cerh22">{{i.name}}</h4>
+            </div>
+            <div class="cerd">
+                <p class="cerp">{{i.description}}</p>
+                <div class="gap" style="display: flex; flex-direction: row; gap: 10px; align-items: center;">
+                    <p class="cerp"><i class="fa-regular fa-calendar-days fa-2x"></i></p>
+                    <p class="cerh5">{{i.duration}}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        </section>
+
+        <section class="sectt" id="offer">
+            <h1 class="skills_h1">What I Offer</h1>
+            <div class="offgrid">
+
+                {% for i in offer %}
+                <div class="off">
+                    <h3 class="offh6">{{ i.name }}</h3>
+                    <p class="offp">{{i.description}}</p>
+                    <button class="offbtn modal-button" href="#myModal{{ forloop.counter }}">view more <span style="margin-left: 10px;"><i class="fa-solid fa-arrow-right"></i></span></button>
+                    <div id="myModal{{ forloop.counter }}" class="modal">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <span class="close">×</span>
+                            <h2>{{ i.name }}</h2>
+                          </div>
+                          <div class="modal-body">
+                            <p>{{i.description}}</p>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </section>
+
+    <section class="pro" id="projects">
+        <div class="guy">
+        <div class="porr"><h1 class="por_h1">My Projects</h1></div>
+        <p class="ssp">All of the projects mentioned below are my personal developed all by myself.</p>
+        <p class="ssp">Only my top projects are displayed here for complete project display <a href="{% url 'projects' %}" class="pora">Click Here..</a></p>
+            <div class="porbox0">
+                {% for i in projects %}
+                {% if i.priority >= 2 %}
+                <a style='text-decoration:none;' href="{% url 'final' i.id %}" target="_blank">
+                <div class="porbox">
+                    <div class="porbox1">
+                        <h1 class="porh12">{{i.name}}</h1>
+                        <div class="ssp divv">{{i.description}}</div>
+                        <p class="ssp"><span class="sspblah">Tools Used: </span>{{i.tools}}</p>
+                    </div>
+                    <div class="porbox2" >
+                        <img src="{{i.image_path.url}}" alt="" class="por" >
+                    </div>
+                </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="flexx">
+                <a href="{% url 'projects' %}" target="_blank" style="text-decoration: none;"><button class="browse">Browse more</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="prop" id="contact">
+        <h1 class="about_h11">Contact me</h1>
+        <div class="con">
+            <div class="con2">
+                <div class="con4">
+                    <a class="cona"><i class="fa-3x fa-sharp fa-solid fa-envelope"></i></a>
+                    <p class="conp">huzaifainshal@gmail.com</p>
+                </div>
+                <div class="con4">
+                    <a class="cona"><i class="fa-3x fa-brands fa-square-whatsapp"></i></a>
+                    <p class="conp">+923302546626</p>
+                </div>
+                <div class="con4">
+                    <a class="cona"><i class="fa-3x fa-brands fa-square-facebook"></i></a>
+                    <p class="conp"><a target="_blank" href="https://www.facebook.com/muhammadhuzaifainshal" style="text-decoration: none; color:inherit;">/muhammadhuzaifainshal</a></p>
+                </div>
+            </div>
+            <!--<div class="con3">-->
+            <!--<form action="" method="POST">-->
+            <!--    {% csrf_token %}-->
+            <!--    <input type="text" class="coninput" placeholder="SUBJECT" name="subject">-->
+            <!--    <input type="email" class="coninput" placeholder="EMAIL" name="email">-->
+            <!--    <input type="text" class="coninput conmessage" placeholder="MESSAGE" name="message">-->
+            <!--    <div style="display: flex; flex-direction: row; justify-content: flex-end;"><button class="conbtn" type="submit" name="submit" value="submit">Submit</button></div>-->
+            <!--</form>-->
+            <!--</div>-->
+            <div class="con3">
+                <div class="con4">
+                    <a class="cona2"><i class="fa-3x fa-brands fa-linkedin"></i></a>
+                    <p class="conp2"><a target="_blank" href="https://www.linkedin.com/in/huzaifa-inshal-b4a443279" style="text-decoration: none; color:inherit;">/HuzaifaInshal</a></p>
+                </div>
+                <div class="con4">
+                    <a class="cona2"><i class="fa-3x fa-brands fa-github"></i></i></a>
+                    <p class="conp2"><a target="_blank" href="https://github.com/HuzaifaInshal" style="text-decoration: none; color:inherit;">/HuzaifaInshal</a></p>
+                </div>
+                <div class="con4">
+                    <a class="cona2"><i class="fa-3x fa-brands fa-square-instagram"></i></a>
+                    <p class="conp2"><a target="_blank" href="https://www.instagram.com/huzaifa_inshal" style="text-decoration: none; color:inherit;">/huzaifa_inshal</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{% static 'js/first.js' %}"></script>
+
+</body>
+</html>
