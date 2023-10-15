@@ -54,6 +54,7 @@ class Projects(models.Model):
     priority = models.IntegerField(default=0)
     live_link = models.URLField(null=True,blank=True)
     git_link = models.URLField(null=True,blank=True)
+    target = models.TextField(null=True,blank=True,default='web')
 
     def __str__(self):
         return self.name
